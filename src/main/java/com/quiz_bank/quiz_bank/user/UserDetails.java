@@ -21,9 +21,8 @@ public class UserDetails {
 		
 	}
 
-	public UserDetails(Long id, String firstName, String lastName, String role) {
+	public UserDetails(String firstName, String lastName, String role) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.role = role;
