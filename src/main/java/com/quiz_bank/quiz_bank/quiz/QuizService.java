@@ -90,4 +90,13 @@ public class QuizService {
 		return optionalQuiz.get();
 	}
 	
+	// GET request to retrieve all quizzes.
+	public List<Question> retrieveAllQuizQuestions(String quizId) {
+		Quiz quiz = retrieveQuizById(quizId);
+		
+		if (quiz == null) return null;
+		
+		return quiz.getQuestions();
+	}
+	
 }
