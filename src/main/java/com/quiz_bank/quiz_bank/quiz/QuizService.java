@@ -99,7 +99,7 @@ public class QuizService {
 		return quiz.getQuestions();
 	}
 	
-	// Retrieve a specific quiz question.
+	// GET request to retrieve a specific quiz question.
 	public Question retrieveSpecificSurveyQuestion(String quizId, String questionId) {
 		List<Question> quizQuestions = retrieveAllQuizQuestions(quizId);
 		
