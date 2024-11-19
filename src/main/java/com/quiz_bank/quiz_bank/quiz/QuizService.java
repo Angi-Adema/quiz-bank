@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
-// Spring to manage this components so use @Service.
+// Spring to manage this component so use @Service.
 @Service
 public class QuizService {
 
@@ -18,7 +18,7 @@ public class QuizService {
 	// Initialize with test data.
 	static {
 		
-		// Survey 1 with four questions (JavaScript).
+		// Quiz 1 with four questions (JavaScript).
 		Question question1 = new Question("Question1", "What is JavaScript primarily used for?", 
 				Arrays.asList("A. Styling web pages", "B. Adding interactivity to web pages", "C. Creating databases", "D. Writing server-side scripts"), "B. Adding interactivity to web pages");
 		Question question2 = new Question("Question2", "Which of the following is the correct way to declare a variable in JavaScript?", 
@@ -31,11 +31,11 @@ public class QuizService {
 		// Put questions into a list.
 		List<Question> questionsForQuiz1 = new ArrayList<>(Arrays.asList(question1, question2, question3, question4));
 		
-		// Initialize Survey1
+		// Initialize quiz1
 		Quiz quiz1 = new Quiz("Quiz1", "JavaScript Quiz", "JavaScript quiz for interviewees", questionsForQuiz1);
 		
 		
-		// Survey 2 with four questions (Python).
+		// Quiz 2 with four questions (Python).
 		Question question5 = new Question("Question5", "What is Python primarily used for?", 
 				Arrays.asList("A. Mobile application development", "B. Web development, data analysis, and automation", "C. Gaming only", "D. Creating operating systems"), "B. Web development, data analysis, and automation");
 		Question question6 = new Question("Question6", "Which of the following is the correct way to print a message in Python?", 
@@ -48,11 +48,11 @@ public class QuizService {
 		// Put questions into a list.
 		List<Question> questionsForQuiz2 = new ArrayList<>(Arrays.asList(question5, question6, question7, question8));
 		
-		// Initialize Survey1
+		// Initialize quiz2
 		Quiz quiz2 = new Quiz("Quiz2", "Python Quiz", "Python quiz for interviewees", questionsForQuiz2);
 		
 		
-		// Survey 3 with four questions (Java).
+		// Quiz 3 with four questions (Java).
 		Question question9 = new Question("Question9", "Which of the following is a valid Java keyword?", 
 				Arrays.asList("A. static", "B. public", "C. class", "D. All of the above"), "D. All of the above");
 		Question question10 = new Question("Question10", "What is the extension of a compiled Java file?", 
@@ -65,7 +65,7 @@ public class QuizService {
 		// Put questions into a list.
 		List<Question> questionsForQuiz3 = new ArrayList<>(Arrays.asList(question9, question10, question11, question12));
 		
-		// Initialize Survey1
+		// Initialize quiz3
 		Quiz quiz3 = new Quiz("Quiz3", "Java Quiz", "Java quiz for interviewees", questionsForQuiz3);
 		
 		// Add all quizzes to the list.
