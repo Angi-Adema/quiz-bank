@@ -75,7 +75,7 @@ public class QuizService {
 		
 	}
 	
-	// Return the quizzes.
+	// GET request to return all quizzes.
 	public List<Quiz> retrieveAllQuizzes() {
 		return quizzes;
 	}
@@ -90,13 +90,26 @@ public class QuizService {
 		return optionalQuiz.get();
 	}
 	
-	// GET request to retrieve all quizzes.
+	// GET request to retrieve all quiz questions.
 	public List<Question> retrieveAllQuizQuestions(String quizId) {
 		Quiz quiz = retrieveQuizById(quizId);
 		
 		if (quiz == null) return null;
 		
 		return quiz.getQuestions();
+	}
+	
+	// Retrieve a specific quiz question.
+	public Question retrieveSpecificSurveyQuestion(String quizId, String questionId) {
+		List<Question> quizQuestions = retrieveAllQuizQuestions(quizId);
+		
+		if (quizQuestions == null) return null;
+		
+		Optional<Question> optionalQuestion = quizQuestions.stream().filter(q -> q.getId().equalsIgnoreCase(questionId)).findFirst();
+		
+		if (optionalQuestion.isEmpty()) return null;
+		
+		return optionalQuestion.get();
 	}
 	
 }
