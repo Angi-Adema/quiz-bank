@@ -43,7 +43,7 @@ public class QuizResource {
 		return quiz;
 	}
 	
-	// PUT request to update a question by removing it and replacing it. URL: localhost:8080/quizzes/QuizId/questions/QuestionId
+	// PUT request to update a question by removing it and replacing it. URL: localhost:8080/quizzes/QuizId/questions
 	@RequestMapping("/quizzes/{quizId}/questions")
 	
 	// Return a List of questions from a specific quiz.
@@ -55,6 +55,21 @@ public class QuizResource {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		
 		return questions;
+	}
+	
+	// GET request to retrieve the specific question. URL: localhost:8080/quizzes/QuizId/questions/Question#
+	@RequestMapping("/quizzes/{quizId}/questions/{questionId}")
+	
+	public Question retrieveSpecificQuizQuestion(@PathVariable String quizId, @PathVariable String questionId) {
+		
+		Question question = quizService.retrieveSpecificQuizQuestion(quizId, questionId);
+		
+		if (question == null)
+			
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		
+		return question;
+		
 	}
 	
 	

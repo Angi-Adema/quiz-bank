@@ -100,7 +100,7 @@ public class QuizService {
 	}
 	
 	// GET request to retrieve a specific quiz question.
-	public Question retrieveSpecificSurveyQuestion(String quizId, String questionId) {
+	public Question retrieveSpecificQuizQuestion(String quizId, String questionId) {
 		List<Question> quizQuestions = retrieveAllQuizQuestions(quizId);
 		
 		if (quizQuestions == null) return null;
