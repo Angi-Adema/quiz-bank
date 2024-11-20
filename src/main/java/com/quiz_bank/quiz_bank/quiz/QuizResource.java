@@ -1,12 +1,17 @@
 package com.quiz_bank.quiz_bank.quiz;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 // Spring REST API controller.
 @RestController
@@ -72,6 +77,21 @@ public class QuizResource {
 		
 	}
 	
+	// POST request to create a new quiz question. URL: localhost:8080/surveys/{surveyId}/questions/{questionId}
+	@RequestMapping(value = "/quizzes/{quizId}/questions", method = RequestMethod.POST)
+	
+	// Send details of the new question as part of the request body.
+	public ResponseEntity<Object> addNewQuizQuestion(@PathVariable String quizId, @RequestBody Question question) {
+		
+		// Add question to a specific quiz.
+		String questionId = quizService.addNewQuizQuestion(quizId, question);
+		
+		// Create a location and return it back. We need to access the question we are creating and want to send the location as part of the response.
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{questionId}").buildAndExpand(questionId).toUri(); // Picking up URI of this request and appending /{questionId} and build this with the actual questionId. Name of parameter and variable must match.
+		
+		// Return correct response of 201 to confirm the question has been created.
+		return ResponseEntity.created(location).build();
+	}
 	
 	
 }

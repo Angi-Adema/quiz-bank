@@ -1,5 +1,7 @@
 package com.quiz_bank.quiz_bank.quiz;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -110,6 +112,25 @@ public class QuizService {
 		if (optionalQuestion.isEmpty()) return null;
 		
 		return optionalQuestion.get();
+	}
+	
+	// POST request to create a new quiz question.
+	public String addNewQuizQuestion(String quizId, Question question) {
+		List<Question> questions = retrieveAllQuizQuestions(quizId);
+		
+		question.setId(generateRandomId());
+		
+		questions.add(question);
+		
+		return question.getId();
+	}
+	
+	// Generate the random Id.
+	private String generateRandomId() {
+		
+		SecureRandom secureRandom = new SecureRandom();
+		
+		return new BigInteger(32, secureRandom).toString();
 	}
 	
 }
