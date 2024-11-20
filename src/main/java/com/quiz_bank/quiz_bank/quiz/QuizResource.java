@@ -27,7 +27,7 @@ public class QuizResource {
 		return quizService.retrieveAllQuizzes();
 	}
 	
-	// Create URI to retrieve a quiz by the quiz Id. URL: localhost:8080/quizzes/quizId.
+	// Create URI to retrieve a quiz by the quiz Id. URL: localhost:8080/quizzes/QuizId.
 	// Correct error when enter a quizId that does not exist, extract to local variable and return quizService.retrieveQuizById(quizId).
 	@RequestMapping("/quizzes/{quizId}")
 	public Quiz retrieveQuizById(@PathVariable String quizId) {
@@ -38,9 +38,23 @@ public class QuizResource {
 		if (quiz == null)
 			
 			// Throw correct error message if the Id does not exist.
-			throw new ResponseStatusException(HttpStatus.NOT_EXTENDED);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		
 		return quiz;
+	}
+	
+	// PUT request to update a question by removing it and replacing it. URL: localhost:8080/quizzes/QuizId/questions/QuestionId
+	@RequestMapping("/quizzes/{quizId}/questions")
+	
+	// Return a List of questions from a specific quiz.
+	public List<Question> retrieveAllQuizQuestions(@PathVariable String quizId) {
+		List <Question> questions = quizService.retrieveAllQuizQuestions(quizId);
+		
+		// Handle null questions.
+		if (questions == null)
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		
+		return questions;
 	}
 	
 	
